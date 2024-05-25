@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实时显示按下按键示例</title>
+    <style>
+        #keys-pressed {
+            font-family: monospace;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            min-height: 50px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var keysPressedDiv = document.getElementById('keys-pressed');
+            var keysDown = {}; // 用于记录当前按下的键
+
+            // 键盘按下事件
+            document.addEventListener('keydown', function(event) {
+                var key = event.key.toUpperCase(); // 转换为大写以便统一显示
+                
+                // 对于WASD键进行处理
+                if ('WASD'.includes(key)) {
+                    event.preventDefault(); // 阻止默认行为，比如滚动页面
+                    keysDown[key] = true;
+                    updateKeysDisplay(keysDown);
+                }
+            });
+
+            // 键盘抬起事件
+            document.addEventListener('keyup', function(event) {
+                var key = event.key.toUpperCase();
+                if (key in keysDown) {
+                    delete keysDown[key];
+                    updateKeysDisplay(keysDown);
+                }
+            });
+
+            // 更新显示当前按下的键
+            function updateKeysDisplay(keys) {
+                var keysStr = Object.keys(keys).join(', ') || '无';
+                keysPressedDiv.textContent = "当前按下的键: " + keysStr;
+            }
+        });
+    </script>
+</head>
+<body>
+    <h2>实时显示用户按下按键</h2>
+    <div id="keys-pressed">当前按下的键: 无</div>
+</body>
+</html>
