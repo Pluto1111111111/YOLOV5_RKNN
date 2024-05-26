@@ -1,6 +1,7 @@
 import os, shutil, random
 from tqdm import tqdm
 
+
 """
 标注文件是yolo格式（txt文件）
 训练集：验证集：测试集 （7：2：1） 
