@@ -1,0 +1,12 @@
+[Unit]
+Description=My Program Startup Service
+After=network-online.target
+
+[Service]
+ExecStart=/home/orangepi/miniconda3/envs/yolo/bin/python3.9 /home/orangepi/rknn/Program/main.py
+Environment="PATH=/home/orangepi/miniconda3/envs/yolo/bin:$PATH"
+WorkingDirectory=/home/orangepi/rknn/Program
+
+[Install]
+WantedBy=default.target
+
