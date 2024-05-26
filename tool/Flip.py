@@ -1,5 +1,12 @@
 import os
 
+
+# 使用示例
+input_directory = './labels'  # 包含YOLO标签文件的目录
+output_directory = './label_'  # 输出翻转后标签文件的目录
+image_width = 1920  # 图像的宽度
+
+
 def flip_yolo_boxes(input_file, output_file, image_width):
     """
     左右翻转YOLO格式的标签文件中的bounding box坐标。
@@ -37,9 +44,6 @@ def batch_flip_yolo_boxes(input_dir, output_dir, image_width):
             output_file_path = os.path.join(output_dir, 'Flip_' + filename)
             flip_yolo_boxes(input_file_path, output_file_path, image_width)
 
-# 使用示例
-input_directory = './labels'  # 包含YOLO标签文件的目录
-output_directory = './label_'  # 输出翻转后标签文件的目录
-image_width = 1920  # 图像的宽度
+
 
 batch_flip_yolo_boxes(input_directory, output_directory, image_width)
