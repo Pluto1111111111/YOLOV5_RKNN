@@ -1,5 +1,9 @@
 import os
 
+"""
+用来对label文件进行调整
+"""
+
 def batch_modify_txt_files(directory, target_string, replacement_string):
     """
     批量修改指定目录下所有txt文件中的目标字符串为新字符串。
